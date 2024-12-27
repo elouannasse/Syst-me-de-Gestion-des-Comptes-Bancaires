@@ -1,7 +1,6 @@
- <?php 
-
-class BusinessAccount extends Account {  
-    private $frais;
+<?php
+class CurrentAccount extends Account {  
+    private $retraits;
     
    private $database;
     private $conn;
@@ -25,10 +24,10 @@ class BusinessAccount extends Account {
         
         $lastid = $this->conn->lastInsertId();
         
-        $query = "INSERT INTO BusinessAccount(Fraix	, Account_id) VALUES (:Fraix,:account_id)";
+        $query = "INSERT INTO CurrentAccount(Retrait, Account_id) VALUES (:retrait,:account_id)";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
-            ':retrait' => $this->Fraix,
+            ':retrait' => $this->retraits,
             ':account_id' => $lastid
         ]);
     }
@@ -39,6 +38,3 @@ class BusinessAccount extends Account {
 
 
 ?>
-
-
-
