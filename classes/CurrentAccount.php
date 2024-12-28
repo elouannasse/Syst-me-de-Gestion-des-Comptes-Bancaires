@@ -19,7 +19,7 @@ class CurrentAccount extends Account {
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
             ':numero' => $this->N_C,
-            ':balance' => $this->Balance
+            ':balance' => $this->Balance 
         ]);
         
         $lastid = $this->conn->lastInsertId();
