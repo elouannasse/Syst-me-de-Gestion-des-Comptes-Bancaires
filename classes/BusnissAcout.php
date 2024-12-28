@@ -5,11 +5,11 @@ class BusinessAccount extends Account {
     
    private $database;
     private $conn;
-    public function __construct($N_C, $Balance, $retraits) {
+    public function __construct($N_C, $Balance, $frais) {
         parent::__construct($N_C, $Balance);
         $this->N_C = $N_C;    
         $this->Balance = $Balance;    
-        $this->retraits = $retraits;
+        $this->frais = $frais;
         $database = new Database();   
         $this->conn = $database->conn();  
     }
@@ -25,10 +25,10 @@ class BusinessAccount extends Account {
         
         $lastid = $this->conn->lastInsertId();
         
-        $query = "INSERT INTO BusinessAccount(Fraix	, Account_id) VALUES (:Fraix,:account_id)";
+        $query = "INSERT INTO besinnessaccount(fraix	, Account_id) VALUES (:Fraix,:account_id)";  
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
-            ':retrait' => $this->Fraix,
+            ':Fraix' => $this->frais, 
             ':account_id' => $lastid
         ]);
     }
